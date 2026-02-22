@@ -21,7 +21,3 @@ __pycache__/
 # Sistema operacional
 .DS_Store
 Thumbs.db
-
-# Arquivo demandas
-
-/locadora-sql/demandas_diretoria_marketing.txt
