@@ -1,4 +1,4 @@
-\# Sistema de Locadora - Projeto SQL
+# Sistema de Locadora - Projeto SQL
 
 
 
@@ -10,7 +10,7 @@ Projeto desenvolvido em Oracle SQL com foco em modelagem relacional, consultas a
 
 
 
-\## Modelo de Dados
+## Modelo de Dados
 
 
 
@@ -18,29 +18,29 @@ O sistema é composto por 5 tabelas principais:
 
 
 
-\- CLIENTE
+- CLIENTE
 
-\- FILME
+- FILME
 
-\- GENERO
+- GENERO
 
-\- PRECO
+- PRECO
 
-\- LOCACAO
-
-
-
-\### Relacionamentos
+- LOCACAO
 
 
 
-\- Um CLIENTE pode realizar várias LOCAÇÕES (1:N)
+### Relacionamentos
 
-\- Um FILME pertence a um GÊNERO
 
-\- O preço do filme é definido pela COR
 
-\- Uma LOCAÇÃO relaciona CLIENTE e FILME
+- Um CLIENTE pode realizar várias LOCAÇÕES (1:N)
+
+- Um FILME pertence a um GÊNERO
+
+- O preço do filme é definido pela COR
+
+- Uma LOCAÇÃO relaciona CLIENTE e FILME
 
 
 
@@ -48,87 +48,87 @@ O sistema é composto por 5 tabelas principais:
 
 
 
-\## Estrutura das Tabelas
+## Estrutura das Tabelas
 
 
 
-\### CLIENTE
+### CLIENTE
 
 Armazena informações dos clientes.
 
 
 
-\- CODCLIENTE (PK)
+- CODCLIENTE (PK)
 
-\- NOMCLIENTE
+- NOMCLIENTE
 
-\- ENDCLIENTE
+- ENDCLIENTE
 
-\- BAIRCLIENTE
+- BAIRCLIENTE
 
-\- CIDCLIENTE
+- CIDCLIENTE
 
-\- UFCLIENTE
+- UFCLIENTE
 
 
 
-\### FILME
+### FILME
 
 Armazena os filmes disponíveis para locação.
 
 
 
-\- CODFILME (PK)
+- CODFILME (PK)
 
-\- NOMEFILME
+- NOMEFILME
 
-\- COR (FK → PRECO)
+- COR (FK >> PRECO)
 
-\- STATUS (D = Disponível / L = Locado)
+- STATUS (D = Disponível / L = Locado)
 
-\- CODGENERO (FK → GENERO)
+- CODGENERO (FK >> GENERO)
 
 
 
-\### GENERO
+### GENERO
 
 Categorias dos filmes.
 
 
 
-\- CODGENERO (PK)
+- CODGENERO (PK)
 
-\- DESCRICAO
+- DESCRICAO
 
 
 
-\### PRECO
+### PRECO
 
 Define o valor da locação por cor do filme.
 
 
 
-\- COR (PK)
+- COR (PK)
 
-\- VALOR
+- VALOR
 
 
 
-\### LOCACAO
+### LOCACAO
 
 Registra as locações realizadas.
 
 
 
-\- CODLOCACAO (PK - Identity)
+- CODLOCACAO (PK >> Identity)
 
-\- CODCLIENTE (FK → CLIENTE)
+- CODCLIENTE (FK >> CLIENTE)
 
-\- CODFILME (FK → FILME)
+- CODFILME (FK >> FILME)
 
-\- DATALOC
+- DATALOC
 
-\- DATADEVOLUCAO
+- DATADEVOLUCAO
 
 
 
@@ -136,59 +136,59 @@ Registra as locações realizadas.
 
 
 
-\## Consultas Desenvolvidas
+## Consultas Desenvolvidas
 
 
 
-\### Listagem de Filmes com Gênero
+### Listagem de Filmes com Gênero
 
 JOIN entre FILME e GENERO.
 
 
 
-\### Locações com Nome do Cliente e Filme
+### Locações com Nome do Cliente e Filme
 
 JOIN entre CLIENTE, LOCACAO e FILME.
 
 
 
-\### Filmes Locados
+### Filmes Locados
 
 Filtro por STATUS = 'L'.
 
 
 
-\### Clientes que nunca alugaram
+### Clientes que nunca alugaram
 
 Uso de LEFT JOIN com verificação de NULL.
 
 
 
-\### Quantidade de Filmes por Cliente
+### Quantidade de Filmes por Cliente
 
 Uso de COUNT() e GROUP BY.
 
 
 
-\### Total Gasto por Cliente
+### Total Gasto por Cliente
 
 Uso de SUM() com múltiplos JOINs.
 
 
 
-\### Filme Mais Alugado
+### Filme Mais Alugado
 
 Uso de COUNT() + ORDER BY + FETCH FIRST 1 ROW ONLY.
 
 
 
-\### Clientes que gastaram mais que 10 reais
+### Clientes que gastaram mais que 10 reais
 
 Uso de HAVING com agregação.
 
 
 
-\### Clientes acima da média
+### Clientes acima da média
 
 Subquery com cálculo de média geral.
 
@@ -198,11 +198,11 @@ Subquery com cálculo de média geral.
 
 
 
-\## View Criada
+## View Criada
 
 
 
-\### CLIENTES\_ACIMA\_DA\_MEDIA
+### CLIENTES\_ACIMA\_DA\_MEDIA
 
 
 
@@ -214,23 +214,23 @@ View que retorna clientes cujo total gasto é superior à média geral de gastos
 
 
 
-\## Automação com Triggers
+## Automação com Triggers
 
 
 
-\### TRG\_LOCACAO\_FILME
+### TRG_LOCACAO_FILME
 
 Ao inserir uma nova locação:
 
-\- Atualiza automaticamente o STATUS do filme para 'L'.
+- Atualiza automaticamente o STATUS do filme para 'L'.
 
 
 
-\### TRG\_DEVOLUCAO\_FILME
+### TRG\_DEVOLUCAO\_FILME
 
 Ao atualizar DATADEVOLUCAO:
 
-\- Atualiza automaticamente o STATUS para 'D'.
+- Atualiza automaticamente o STATUS para 'D'.
 
 
 
@@ -238,41 +238,15 @@ Ao atualizar DATADEVOLUCAO:
 
 
 
-\## Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 
 
-\- Oracle Database (via Oracle APEX - ambiente cloud)
+- Oracle Database (via Oracle APEX - ambiente cloud)
 
-\- PL/SQL (Triggers)
+- PL/SQL (Triggers)
 
-\- Git \& GitHub
-
-
-
----
-
-
-
-\## Conceitos Aplicados
-
-
-
-\- Modelagem relacional
-
-\- Chaves primárias e estrangeiras
-
-\- JOIN (INNER e LEFT)
-
-\- Funções de agregação
-
-\- Subqueries
-
-\- Views
-
-\- Triggers
-
-\- Regras de negócio automatizadas
+- Git \& GitHub
 
 
 
@@ -280,7 +254,32 @@ Ao atualizar DATADEVOLUCAO:
 
 
 
-\## Objetivo do Projeto
+## Conceitos Aplicados
+
+
+
+- Modelagem relacional
+
+- Chaves primárias e estrangeiras
+
+- JOIN (INNER e LEFT)
+
+- Funções de agregação
+
+- Subqueries
+
+- Views
+
+- Triggers
+
+- Regras de negócio automatizadas
+
+
+
+---
+
+
+## Objetivo do Projeto
 
 
 
