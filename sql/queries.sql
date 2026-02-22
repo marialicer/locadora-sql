@@ -103,7 +103,7 @@ BEGIN
 END;
 /
 
--- Quando devolver filme >>> Sttaus volta para 'Disponível'
+-- Quando devolver filme >>> Staus volta para 'Disponível'
 
 CREATE OR REPLACE TRIGGER TRG_DEVOLUCAO_FILME
 AFTER UPDATE OF DATADEVOLUCAO ON LOCACAO
