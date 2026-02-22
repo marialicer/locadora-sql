@@ -1,0 +1,120 @@
+DEMANDA 1 – Receita Mensal
+Contexto:
+
+A diretoria quer entender a evolução da receita.
+
+Tarefa:
+
+Calcular a receita total por mês
+
+Identificar meses com maior e menor faturamento
+
+Gerar gráfico de linha da evolução mensal
+
+Entrega esperada:
+
+Métrica agregada por mês
+
+Visualização clara
+
+Pequena conclusão escrita
+
+--------------------------------------------
+
+DEMANDA 2 – Filmes Mais Rentáveis
+Contexto:
+
+O time quer saber quais filmes geram mais dinheiro.
+
+Tarefa:
+
+Calcular receita total por filme
+
+Identificar top 5 filmes
+
+Gerar gráfico de barras
+
+Entrega esperada:
+
+Ranking
+
+Gráfico
+
+Insight sobre concentração de receita
+
+--------------------------------------
+
+DEMANDA 3 – Clientes Mais Ativos
+Contexto:
+
+Marketing quer identificar clientes estratégicos.
+
+Tarefa:
+
+Contar número de locações por cliente
+
+Identificar top 10 clientes
+
+Visualizar distribuição
+
+Pergunta estratégica:
+
+A base é concentrada ou distribuída?
+
+-----------------------------------
+
+DEMANDA 4 – Taxa de Devolução
+Contexto:
+
+Operações quer saber se há atrasos.
+
+Tarefa:
+
+Calcular percentual de locações ainda não devolvidas
+
+Analisar tempo médio de locação
+
+Visualizar com gráfico simples
+
+------------------------------------
+
+DEMANDA 5 – Análise Temporal
+Contexto:
+
+Existe sazonalidade?
+
+Tarefa:
+
+Analisar volume de locações por mês
+
+Verificar tendência de crescimento
+
+Identificar padrões
+
+------------------------------
+
+Entregáveis Finais
+
+Você deverá:
+
+Gerar gráficos salvos como PNG
+
+Escrever insights no README
+
+Organizar o código no analysis.py
+
+-------------------------------------
+
+O que a empresa espera de você
+
+Não é só fazer gráfico.
+
+É responder perguntas como:
+
+O negócio está crescendo?
+
+A receita depende de poucos filmes?
+
+Temos clientes recorrentes?
+
+Existe risco operacional?
