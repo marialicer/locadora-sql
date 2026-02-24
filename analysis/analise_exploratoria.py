@@ -9,6 +9,8 @@ locacao_dados.head()
 # %%
 from datetime import datetime, date, timedelta
 # %%
+# Tratamento da variável DATALOC
+
 locacao_dados["DATALOC"] = pd.to_datetime(
     locacao_dados["DATALOC"],
     format = "%m/%d/%Y"
@@ -25,6 +27,10 @@ locacao_dados["MES"] = locacao_dados["DATALOC"].dt.strftime("%B")
 locacao_dados["MES"] = locacao_dados["MES"].replace("marÃ§o", "março")
 locacao_dados.head()
 # %%
+
+# DEMANDA 1 - RECEITA MENSAL
+# Entender a evolução da receita
+
 total_preco = locacao_dados["PRECO"].sum()
 print(total_preco)
 # %%
@@ -67,6 +73,9 @@ plt.show()
 #%% 
 locacao_dados.head()
 # %%
+# DEMANDA 2 – Filmes Mais Rentáveis
+# Quais filmes geram mais dinheiro?
+
 total_filme = (
     locacao_dados
     .groupby("NOMEFILME")["PRECO"]
@@ -105,6 +114,9 @@ plt.show()
 # %%
 locacao_dados.head()
 # %%
+# DEMANDA 3 – Clientes Mais Ativos
+# Identificar clientes estratégicos
+
 clientes_ativos = (
     locacao_dados
     .groupby("NOMCLIENTE")["NOMEFILME"]
