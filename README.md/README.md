@@ -1,8 +1,13 @@
-# Sistema de Locadora - Projeto SQL
+# Sistema de Locadora - Projeto SQL e Python
 
 
+Projeto desenvolvido com Oracle SQL para modelagem relacional e automação de regras de negócio, complementado por análise exploratória em Python para geração de insights estratégicos. O trabalho envolveu:
 
-Projeto desenvolvido em Oracle SQL com foco em modelagem relacional, consultas analíticas, criação de views e triggers para automatização de regras de negócio.
+- Modelagem do banco de dados relacional
+- Consultas analíticas para avaliação de desempenho
+- Criação de views para simplificação de relatórios
+- Triggers para automatização de regras de negócio
+- Análise exploratória com Python para compreensão dos dados
 
 
 
@@ -281,14 +286,55 @@ Ao atualizar DATADEVOLUCAO:
 
 ## Objetivo do Projeto
 
-
-
-Praticar modelagem de banco de dados relacional e consultas SQL avançadas, aplicando regras de negócio reais em um sistema de locadora.
-
+Praticar modelagem de banco de dados relacional e consultas SQL avançadas, aplicando regras de negócio reais em um sistema de locadora. O projeto também inclui análise exploratória com Python, permitindo insights baseados em dados para apoiar decisões estratégicas.
 
 
 ---
 
+## Principais insights da análise exploratória dos dados usando Python
+
+### DEMANDA 1 – Receita Mensal
+Contexto:
+
+A diretoria quer entender a evolução da receita.
+
+A receita da locadora apresentou crescimento após uma queda em maio, quando ficou abaixo de R$ 140. Os meses de maior faturamento foram março e abril, indicando possível sazonalidade ou eventos que impulsionaram as locações.
+
+---
+
+### DEMANDA 2 – Filmes Mais Rentáveis
+Contexto:
+
+O time quer saber quais filmes geram mais dinheiro.
+
+Os filmes mais rentáveis da locadora são "As Branquelas" (215 locações), "Toy Story" (195), "O Exorcista" (175), "Velozes & Furiosos" (170) e "Titanic" (130)". Esses filmes representam oportunidades para campanhas e promoções estratégicas.
+
+---
+
+### DEMANDA 3 – Clientes Mais Ativos
+Contexto:
+
+Marketing quer identificar clientes estratégicos.
+
+Tendência de concentração em torno de 3–5 locações. Não é extremamente concentrada, pois há dispersão (1 a 9). Distribuição moderada, com alguns clientes muito ativos e outros pouco ativos. Isso sugere segmentação possível para marketing (baixo, médio e alto engajamento).
+
+---
+
+### DEMANDA 4 – Taxa de Devolução
+Contexto:
+
+Operações quer saber se há atrasos.
+
+O percentual de filmes não devolvidos atualmente está em aproximadamente 19%, com 38 dvd's ainda não sido entregues. Pode indicar necessidade de reforço em políticas de devolução ou comunicação com clientes.
+
+---
+
+### DEMANDA 5 – Análise Temporal
+Contexto:
+
+Existe sazonalidade?
+
+Os meses de março e abril costumam apresentar maiores volumes de locação por mês, chegando ao pico de 40 filmes locados em março. Evidência de sazonalidade, útil para planejamento de estoque e campanhas.
 
 
 

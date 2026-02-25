@@ -159,7 +159,3 @@ plt.title("Volume de Locações por Mês")
 plt.xticks(locacao_mes["MES_NUM"])
 
 plt.show()
-
-# %%
-locacao_dados.head()
-# %%
