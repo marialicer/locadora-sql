@@ -95,6 +95,8 @@ clientes_ativos = (
     .sort_values("QUANTIDADE_LOCACOES", ascending=False)
 )
 
+clientes_ativos.describe()
+# %%
 plt.figure(figsize=(10,6))
 plt.hist(clientes_ativos["QUANTIDADE_LOCACOES"], bins=10)
 
