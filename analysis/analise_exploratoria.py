@@ -3,7 +3,9 @@ import pandas as pd
 import numpy as np
 import locale
 #%%
-locacao_dados = pd.read_csv ("C:/Users/alice/OneDrive/Documentos/locadora-sql/data/locadora_dataset.csv")
+locacao_dados = pd.read_excel(
+    "C:/Users/alice/OneDrive/Documentos/locadora-sql/data/dataset_locadora.xlsx"
+)
 # %%
 locacao_dados.head()
 # %%
@@ -31,12 +33,12 @@ locacao_dados.head()
 # DEMANDA 1 - RECEITA MENSAL
 # Entender a evolução da receita
 
-total_preco = locacao_dados["PRECO"].sum()
+total_preco = locacao_dados["VALOR"].sum()
 print(total_preco)
 # %%
 total_por_mes = (
     locacao_dados
-    .groupby("MES")["PRECO"]
+    .groupby("MES")["VALOR"]
     .sum()
     .reset_index()
 )
@@ -57,7 +59,7 @@ total_por_mes = total_por_mes.sort_values("MES")
 import matplotlib.pyplot as plt
 
 plt.figure()
-plt.plot(total_por_mes["MES"], total_por_mes["PRECO"])
+plt.plot(total_por_mes["MES"], total_por_mes["VALOR"])
 plt.xlabel("Mês")
 plt.ylabel("Total Faturado")
 plt.title("Receita Mensal")
@@ -78,17 +80,17 @@ locacao_dados.head()
 
 total_filme = (
     locacao_dados
-    .groupby("NOMEFILME")["PRECO"]
+    .groupby("NOMEFILME")["VALOR"]
     .sum()
     .reset_index()
 )
 total_filme.head()
 # %%
-total_filme = total_filme.sort_values("PRECO",ascending=False)
+total_filme = total_filme.sort_values("VALOR",ascending=False)
 
 # %%
 plt.figure(figsize=(12,6))
-barras = plt.bar(total_filme['NOMEFILME'],total_filme['PRECO'], color='skyblue')
+barras = plt.bar(total_filme['NOMEFILME'],total_filme['VALOR'], color='skyblue')
 plt.xlabel('FILME')
 plt.ylabel('RENDA POR FILME')
 plt.title('FILMES MAIS RENTÁVEIS')
@@ -144,3 +146,43 @@ clientes_ativos["QUANTIDADE_FILMES"].describe()
 ## A base apresenta comportamento relativamente distribuído. 
 ## A maioria dos clientes realiza entre 3 e 5 locações, 
 ## sem concentração excessiva em poucos clientes.
+# %% 
+
+# DEMANDA 4 – Taxa de Devolução
+# Identificar atrasos na devolução
+# %%
+locacao_dados["DEVOLUCAO"] = locacao_dados ["DATADEVOLUCAO"]
+# %%
+locacao_dados["DEVOLUCAO"] = locacao_dados["DATADEVOLUCAO"].apply(
+    lambda x: "Não devolvido" if pd.isna(x) else "Devolvido"
+)
+# %%
+taxa_devolucao = locacao_dados["DEVOLUCAO"].value_counts()
+total_devolucao = taxa_devolucao.sum()
+percentual_devolucao = (taxa_devolucao/total_devolucao) * 100
+resultado_devolucao = pd.DataFrame({
+    "Quantidade": taxa_devolucao,
+    "Percentual (%)": percentual_devolucao
+})
+resultado_devolucao.loc["Total"] = [
+    resultado_devolucao["Quantidade"].sum(),
+    resultado_devolucao["Percentual (%)"].sum()
+]
+
+resultado_devolucao.head()
+# %%
+hoje = pd.Timestamp.today()
+
+locacao_dados["DIAS_DEV"] = np.where(
+    locacao_dados["DATADEVOLUCAO"].isna(),
+    (hoje - locacao_dados["DATALOC"]).dt.days,
+    (locacao_dados["DATADEVOLUCAO"] - locacao_dados["DATALOC"]).dt.days
+)
+locacao_dados.sort_values("DIAS_DEV", ascending=False).head(35)
+# %%
+locacao_dados[
+    locacao_dados["DATADEVOLUCAO"] < locacao_dados["DATALOC"]
+]
+# %%
+locacao_dados.head()
+# %%
